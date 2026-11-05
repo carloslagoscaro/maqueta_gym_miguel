@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One More Gym | Home Studio de Acondicionamiento Físico</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#EF4444', // Rojo intenso / fuego
+                            redDark: '#DC2626',
+                            redGlow: '#B91C1C',
+                            dark: '#0A0A0A', // Negro profundo
+                            card: '#121212', // Carbón / gris súper oscuro
+                            cardHover: '#18181B',
+                            border: '#27272A', // Borde gris carbón
+                            accent: '#1F1F23'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #E5E7EB;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-display {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.3);
+        }
+        .glow-red-sm {
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+        }
+        .hero-bg {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.98) 100%), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo One More Gym -->
+                <div class="flex items-center gap-3">
+    <!-- Tu icono en PNG -->
+    <img src="logo.png" alt="Logo"  class="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(239,68,68,0.4)]">
+    
+    <!-- Texto al lado -->
+    <div>
+        <span class="text-xl font-black tracking-tight text-white block leading-none">
+            ONE MORE<span class="text-red-500"> GYM</span>
+        </span>
+        <span class="text-[10px] uppercase font-bold tracking-widest text-zinc-400 block mt-1">
+            Martial Art
+        </span>
+    </div>
+</div>
+                <!-- Nav Desktop -->
+                <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold tracking-wider uppercase">
+                    <a href="#inicio" class="text-white hover:text-brand-red transition-colors">Inicio</a>
+                    <a href="#profe" class="text-gray-300 hover:text-brand-red transition-colors">El Profe</a>
+                    <a href="#programas" class="text-gray-300 hover:text-brand-red transition-colors">Programas</a>
+                    <a href="#planes" class="text-brand-red hover:underline transition-colors font-extrabold">Planes</a>
+                    <a href="#horarios" class="text-gray-300 hover:text-brand-red transition-colors">Horarios</a>
+                    <a href="#contacto" class="text-gray-300 hover:text-brand-red transition-colors">Contacto</a>
+                </nav>
+
+                <!-- CTA Header -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="#reserva" class="bg-brand-red hover:bg-brand-redDark text-white font-black px-5 py-2.5 rounded-full uppercase tracking-wider text-xs transition-all duration-300 glow-red">
+                        Clase de Prueba
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-gray-300 hover:text-white p-2 focus:outline-none" aria-label="Abrir Menú">
+                        <i data-lucide="menu" id="menu-icon" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brand-card border-b border-brand-border px-6 pt-4 pb-6 space-y-4">
+            <a href="#inicio" class="mobile-link block text-white font-medium hover:text-brand-red py-1">Inicio</a>
+            <a href="#profe" class="mobile-link block text-gray-300 font-medium hover:text-brand-red py-1">El Profe</a>
+            <a href="#programas" class="mobile-link block text-gray-300 font-medium hover:text-brand-red py-1">Programas</a>
+            <a href="#planes" class="mobile-link block text-brand-red font-bold py-1">Planes (2 Opciones)</a>
+            <a href="#horarios" class="mobile-link block text-gray-300 font-medium hover:text-brand-red py-1">Horarios</a>
+            <a href="#contacto" class="mobile-link block text-gray-300 font-medium hover:text-brand-red py-1">Contacto</a>
+            <a href="#reserva" class="mobile-link block w-full text-center bg-brand-red text-white font-black py-3.5 rounded-xl uppercase text-xs tracking-wider mt-2">
+                Agendar Clase de Prueba
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-screen hero-bg flex items-center pt-28 pb-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-8 space-y-8 text-center lg:text-left">
+                    
+                    <div class="inline-flex items-center gap-2 bg-brand-card/90 border border-brand-red/40 px-4 py-2 rounded-full text-brand-red text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-red animate-pulse"></span>
+                        Entrenamientos Privados en Home Studio
+                    </div>
+                    
+                    <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl uppercase leading-none tracking-tight">
+                        UNA REPETICIÓN MÁS. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-400 to-red-600">
+                            TUS METAS MÁS CERCA.
+                        </span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Bienvenido a <strong class="text-white font-semibold">One More Gym Martial Art</strong>. Clases de acondicionamiento físico personalizadas e impartidas por un profesor dedicado en un espacio casero totalmente equipado, cómodo y sin masificaciones.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#reserva" class="w-full sm:w-auto bg-brand-red hover:bg-brand-redDark text-white font-black px-8 py-4 rounded-xl uppercase tracking-wider text-xs transition-all duration-300 text-center shadow-lg shadow-brand-red/30 hover:scale-105 flex items-center justify-center gap-2 glow-red">
+                            <span>Reserva Tu Clase de Prueba</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#planes" class="w-full sm:w-auto border border-brand-border hover:border-brand-red/50 bg-brand-card/80 hover:bg-brand-card text-white font-bold px-8 py-4 rounded-xl uppercase tracking-wider text-xs transition-all text-center flex items-center justify-center gap-2">
+                            <span>Ver los 2 Planes</span>
+                        </a>
+                    </div>
+
+                    <!-- Métricas destacadas -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-brand-border max-w-xl mx-auto lg:mx-0 text-left">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="shield-check" class="text-brand-red w-6 h-6 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white text-xs sm:text-sm">Sin Masificación</p>
+                                <p class="text-[11px] text-gray-400">Poco flujo de gente</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="user-check" class="text-brand-red w-6 h-6 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white text-xs sm:text-sm">Guía Técnica</p>
+                                <p class="text-[11px] text-gray-400">Postura corregida</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="home" class="text-brand-red w-6 h-6 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white text-xs sm:text-sm">Home Studio</p>
+                                <p class="text-[11px] text-gray-400">Equipado y cómodo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE EL PROFE -->
+    <section id="profe" class="py-24 bg-brand-dark border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-2xl overflow-hidden border-2 border-brand-border bg-brand-card shadow-2xl group hover:border-brand-red/50 transition-all">
+                        <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=80" alt="Profesor One More Gym" class="w-full h-[440px] object-cover filter contrast-110">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 p-6">
+                            <span class="bg-brand-red text-white font-black text-[10px] uppercase tracking-widest px-2.5 py-1 rounded">Entrenador Principal</span>
+                            <h3 class="font-display text-2xl font-black text-white mt-2">Profesor & Creador</h3>
+                            <p class="text-xs text-brand-red">One More Gym Martial Art</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <h2 class="text-brand-red text-xs font-bold tracking-widest uppercase mb-2">Entrena con propósito</h2>
+                        <p class="font-display text-3xl sm:text-4xl font-black uppercase text-white">Un espacio casero diseñado para dar tu 100%</p>
+                    </div>
+
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        En <strong class="text-white">One More Gym Martial Art</strong> adapté mi espacio para ofrecer una alternativa real a la masificación de los gimnasios tradicionales. Mi enfoque es simple: enseñarte a entrenar de forma inteligente, segura y adaptada a tus objetivos específicos.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-brand-card border border-brand-border p-4 rounded-xl flex items-start gap-3 hover:border-brand-red/40 transition-colors">
+                            <i data-lucide="target" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Planes a tu Medida</h4>
+                                <p class="text-xs text-gray-400">Entrenamiento adaptado a tu nivel físico actual.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-brand-card border border-brand-border p-4 rounded-xl flex items-start gap-3 hover:border-brand-red/40 transition-colors">
+                            <i data-lucide="heart-pulse" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Salud & Rendimiento</h4>
+                                <p class="text-xs text-gray-400">Acondicionamiento físico real sin lesiones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMAS DE ACONDICIONAMIENTO -->
+    <section id="programas" class="py-24 bg-brand-card border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-red text-xs font-bold tracking-widest uppercase mb-2">Especialidades</h2>
+                <p class="font-display text-3xl sm:text-5xl font-black uppercase text-white">Nuestros Programas</p>
+                <p class="text-gray-400 mt-3 text-sm">Rutinas dinámicas dirigidas a la quema de grasa, aumento de fuerza y mejora del tono muscular.</p>
+                <div class="w-16 h-1 bg-brand-red mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Programa 1 -->
+                <div class="bg-brand-dark border border-brand-border p-8 rounded-2xl hover:border-brand-red transition-all group hover:glow-red-sm">
+                    <div class="w-12 h-12 bg-brand-accent rounded-xl flex items-center justify-center text-brand-red mb-6 border border-brand-border group-hover:border-brand-red/50">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Acondicionamiento Integral</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Combina trabajo aeróbico y muscular para acelerar tu metabolismo, ganar resistencia física y quemar calorías eficientemente.
+                    </p>
+                </div>
+
+                <!-- Programa 2 -->
+                <div class="bg-brand-dark border border-brand-border p-8 rounded-2xl hover:border-brand-red transition-all group hover:glow-red-sm">
+                    <div class="w-12 h-12 bg-brand-accent rounded-xl flex items-center justify-center text-brand-red mb-6 border border-brand-border group-hover:border-brand-red/50">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Entrenamiento Funcional</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Ejercicios basados en movimientos del día a día usando kettlebells, TRX, bandas y peso corporal para tonificar y agilizar el cuerpo.
+                    </p>
+                </div>
+
+                <!-- Programa 3 -->
+                <div class="bg-brand-dark border border-brand-border p-8 rounded-2xl hover:border-brand-red transition-all group hover:glow-red-sm">
+                    <div class="w-12 h-12 bg-brand-accent rounded-xl flex items-center justify-center text-brand-red mb-6 border border-brand-border group-hover:border-brand-red/50">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Fuerza & Movilidad</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Fortalecimiento de zona media (core), corrección postural y ganancia de masa muscular magra bajo supervisión minuciosa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE PLANES (ROJO Y NEGRO) -->
+    <section id="planes" class="py-24 bg-brand-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-brand-red/10 text-brand-red border border-brand-red/30 text-xs font-bold uppercase px-3 py-1 rounded-full inline-block mb-3">
+                    Inversión en tu Salud
+                </span>
+                <h2 class="font-display text-3xl sm:text-5xl font-black uppercase text-white">Nuestros 2 Planes de Clase</h2>
+                <p class="text-gray-400 mt-3 text-sm">Elige la modalidad que mejor se adapte a tus tiempos y metas personales en nuestro Home Studio.</p>
+            </div>
+
+            <!-- GRID DE LOS 2 PLANES -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- PLAN 1: SEMI-PERSONALIZADO / GRUPO REDUCIDO -->
+                <div class="bg-brand-card border-2 border-brand-border hover:border-brand-red/50 rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Plan 01</span>
+                            <span class="bg-brand-accent text-gray-300 border border-brand-border text-[11px] font-bold px-3 py-1 rounded-full uppercase">Grupos Reducidos (Máx 4)</span>
+                        </div>
+                        
+                        <h3 class="font-display font-black text-2xl sm:text-3xl text-white mb-2">PLAN SEMI-PERSONALIZADO</h3>
+                        <p class="text-xs text-gray-400 mb-6">Ideal para entrenar motivado en un ambiente reducido con supervisión constante.</p>
+                        
+                        <div class="border-t border-b border-brand-border py-6 my-6 space-y-4">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-gray-200"><strong class="text-white">2 o 3 días por semana</strong> en bloques fijos acordados.</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-gray-200">Máximo 3 a 4 personas por turno en el Home Studio.</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-gray-200">Rutinas guiadas con adaptación de cargas según tu nivel.</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-gray-200">Seguimiento de progreso y corrección postural directa.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button onclick="selectPlan('Plan Semi-Personalizado (Grupo Reducido)')" class="w-full bg-brand-accent hover:bg-brand-red text-white font-black py-4 rounded-xl uppercase tracking-wider text-xs transition-all text-center flex items-center justify-center gap-2 border border-brand-border hover:border-brand-red">
+                            <span>Elegir Plan Semi-Personalizado</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PLAN 2: FULL 1 A 1 VIP -->
+                <div class="bg-brand-card border-2 border-brand-red rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative glow-red">
+                    <!-- Badge Destacado -->
+                    <div class="absolute -top-4 right-8 bg-brand-red text-white font-black text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
+                        Recomendado / Máxima Atención
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-brand-red uppercase tracking-wider">Plan 02</span>
+                            <span class="bg-brand-red/20 text-brand-red border border-brand-red/30 text-[11px] font-bold px-3 py-1 rounded-full uppercase">100% Exclusivo 1 a 1</span>
+                        </div>
+                        
+                        <h3 class="font-display font-black text-2xl sm:text-3xl text-white mb-2">PLAN FULL VIP (1 A 1)</h3>
+                        <p class="text-xs text-brand-red/80 mb-6">El espacio y la dedicación del profesor completamente a tu disposición.</p>
+                        
+                        <div class="border-t border-b border-brand-border py-6 my-6 space-y-4">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-gray-200"><strong class="text-white">Sesiones individuales exclusivas</strong> de 60 minutos.</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-gray-200">Flexibilidad de horarios según tu disponibilidad.</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-gray-200">Planificación metabólica y de fuerza 100% personalizada.</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="text-brand-red w-5 h-5 shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-gray-200">Evaluación física inicial y monitoreo continuo de logros.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button onclick="selectPlan('Plan Full VIP (1 a 1 Exclusivo)')" class="w-full bg-brand-red hover:bg-brand-redDark text-white font-black py-4 rounded-xl uppercase tracking-wider text-xs transition-all text-center flex items-center justify-center gap-2 shadow-lg">
+                            <span>Agendar Plan Personalizado 1 a 1</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIOS -->
+    <section id="horarios" class="py-24 bg-brand-card border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-brand-red text-xs font-bold tracking-widest uppercase mb-2">Bloques de Entrenamiento</h2>
+                <p class="font-display text-3xl sm:text-5xl font-black uppercase text-white">Horarios del Studio</p>
+                <p class="text-gray-400 mt-3 text-sm">Filtra los turnos de clase disponibles en One More Gym.</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="day-filters">
+                <button data-day="all" class="day-btn bg-brand-red text-white font-bold px-4 py-2 rounded-full text-xs uppercase tracking-wider shadow-md">Todos</button>
+                <button data-day="lunes" class="day-btn bg-brand-dark text-gray-300 hover:text-white border border-brand-border px-4 py-2 rounded-full text-xs uppercase tracking-wider">Lunes</button>
+                <button data-day="martes" class="day-btn bg-brand-dark text-gray-300 hover:text-white border border-brand-border px-4 py-2 rounded-full text-xs uppercase tracking-wider">Martes</button>
+                <button data-day="miercoles" class="day-btn bg-brand-dark text-gray-300 hover:text-white border border-brand-border px-4 py-2 rounded-full text-xs uppercase tracking-wider">Miércoles</button>
+                <button data-day="jueves" class="day-btn bg-brand-dark text-gray-300 hover:text-white border border-brand-border px-4 py-2 rounded-full text-xs uppercase tracking-wider">Jueves</button>
+                <button data-day="viernes" class="day-btn bg-brand-dark text-gray-300 hover:text-white border border-brand-border px-4 py-2 rounded-full text-xs uppercase tracking-wider">Viernes</button>
+            </div>
+
+            <!-- Grid de Horarios -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="schedule-container">
+                <div class="schedule-card bg-brand-dark border border-brand-border p-5 rounded-xl flex items-center justify-between hover:border-brand-red/40 transition-colors" data-days="lunes miercoles viernes">
+                    <div>
+                        <span class="text-xs font-bold text-brand-red uppercase">08:00 AM - 09:00 AM</span>
+                        <h4 class="font-display font-bold text-white">Bloque Mañana</h4>
+                        <p class="text-xs text-gray-400">Semi-Personalizado</p>
+                    </div>
+                    <span class="text-[10px] font-bold px-2.5 py-1 bg-brand-red/10 text-brand-red border border-brand-red/20 rounded-full">Mañana</span>
+                </div>
+
+                <div class="schedule-card bg-brand-dark border border-brand-border p-5 rounded-xl flex items-center justify-between hover:border-brand-red/40 transition-colors" data-days="martes jueves">
+                    <div>
+                        <span class="text-xs font-bold text-brand-red uppercase">09:30 AM - 10:30 AM</span>
+                        <h4 class="font-display font-bold text-white">Sesión Exclusiva</h4>
+                        <p class="text-xs text-gray-400">Plan 1 a 1 VIP</p>
+                    </div>
+                    <span class="text-[10px] font-bold px-2.5 py-1 bg-red-900/40 text-red-300 border border-red-700/40 rounded-full">Personalizado</span>
+                </div>
+
+                <div class="schedule-card bg-brand-dark border border-brand-border p-5 rounded-xl flex items-center justify-between hover:border-brand-red/40 transition-colors" data-days="lunes miercoles viernes">
+                    <div>
+                        <span class="text-xs font-bold text-brand-red uppercase">06:00 PM - 07:00 PM</span>
+                        <h4 class="font-display font-bold text-white">Acondicionamiento Tarde</h4>
+                        <p class="text-xs text-gray-400">Semi-Personalizado</p>
+                    </div>
+                    <span class="text-[10px] font-bold px-2.5 py-1 bg-brand-accent text-gray-300 border border-brand-border rounded-full">Tarde</span>
+                </div>
+
+                <div class="schedule-card bg-brand-dark border border-brand-border p-5 rounded-xl flex items-center justify-between hover:border-brand-red/40 transition-colors" data-days="martes jueves">
+                    <div>
+                        <span class="text-xs font-bold text-brand-red uppercase">07:15 PM - 08:15 PM</span>
+                        <h4 class="font-display font-bold text-white">Fuerza & Funcional</h4>
+                        <p class="text-xs text-gray-400">Semi-Personalizado</p>
+                    </div>
+                    <span class="text-[10px] font-bold px-2.5 py-1 bg-brand-accent text-gray-300 border border-brand-border rounded-full">Tarde</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE RESERVA / CONTACTO -->
+    <section id="reserva" class="py-24 bg-brand-dark border-t border-brand-border relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Info de Contacto -->
+                <div class="lg:col-span-5 space-y-8" id="contacto">
+                    <div>
+                        <h2 class="text-brand-red text-xs font-bold tracking-widest uppercase mb-2">Ponte en Contacto</h2>
+                        <p class="font-display text-3xl sm:text-4xl font-black uppercase text-white">Reserva tu Clase de Prueba</p>
+                        <p class="text-gray-400 text-sm mt-4 leading-relaxed">
+                            Completa el formulario indicando tu plan de interés y me pondré en contacto contigo para agendar tu primera sesión de evaluación.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6 text-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-brand-red shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Home Studio</h4>
+                                <p class="text-gray-400">Espacio privado equipado (Dirección enviada al agendar)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-brand-red shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">WhatsApp Directo</h4>
+                                <p class="text-gray-400">+56 9 1234 5678</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="lg:col-span-7">
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-10 relative">
+                        <form id="booking-form" class="space-y-6" novalidate>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Nombre Completo *</label>
+                                    <input type="text" id="name" name="name" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors" placeholder="Tu nombre">
+                                    <p class="error-msg text-red-400 text-xs mt-1 hidden"></p>
+                                </div>
+
+                                <div>
+                                    <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Teléfono / WhatsApp *</label>
+                                    <input type="tel" id="phone" name="phone" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors" placeholder="+56 9 ...">
+                                    <p class="error-msg text-red-400 text-xs mt-1 hidden"></p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="plan-select" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Plan de Interés *</label>
+                                    <select id="plan-select" name="plan" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors">
+                                        <option value="">Selecciona un plan</option>
+                                        <option value="Plan Semi-Personalizado (Grupo Reducido)">Plan Semi-Personalizado (Grupos Reducidos)</option>
+                                        <option value="Plan Full VIP (1 a 1 Exclusivo)">Plan Full VIP (1 a 1 Exclusivo)</option>
+                                    </select>
+                                    <p class="error-msg text-red-400 text-xs mt-1 hidden"></p>
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Correo Electrónico</label>
+                                    <input type="email" id="email" name="email" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors" placeholder="correo@ejemplo.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Mensaje u Objetivo Principal</label>
+                                <textarea id="message" name="message" rows="3" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors" placeholder="Cuéntame sobre tu condición física o lo que buscas lograr..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-red hover:bg-brand-redDark text-white font-black py-4 rounded-xl uppercase tracking-wider text-xs transition-all shadow-lg glow-red">
+                                Solicitar Clase de Prueba
+                            </button>
+                        </form>
+
+                        <!-- Toast de Confirmación -->
+                        <div id="form-toast" class="hidden absolute inset-0 bg-brand-dark/95 rounded-2xl flex flex-col items-center justify-center text-center p-6 backdrop-blur-sm border border-brand-red/40">
+                            <div class="w-16 h-16 bg-brand-red/20 border-2 border-brand-red rounded-full flex items-center justify-center text-brand-red mb-4 shadow-lg shadow-brand-red/20">
+                                <i data-lucide="check" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white mb-2">¡Solicitud Recibida!</h3>
+                            <p class="text-gray-300 text-sm max-w-sm mb-6">Te contactaremos a la brevedad para coordinar la hora de tu clase de prueba en One More Gym.</p>
+                            <button id="close-toast" class="bg-brand-red hover:bg-brand-redDark text-white text-xs font-bold uppercase px-6 py-2.5 rounded-lg">
+                                Entendido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-950 border-t border-zinc-900 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <!-- LOGO E IDENTIDAD ALINEADOS -->
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="One More Gym Martial Art Logo" class="h-8 w-8 object-contain drop-shadow-[0_0_6px_rgba(239,68,68,0.4)]">
+                <span class="font-black text-lg text-white tracking-wide">
+                    ONE MORE <span class="text-red-500">GYM MARTIAL ART</span>
+                </span>
+            </div>
+
+                <div class="flex space-x-6 text-xs text-gray-400">
+                    <a href="#inicio" class="hover:text-brand-red">Inicio</a>
+                    <a href="#profe" class="hover:text-brand-red">El Profe</a>
+                    <a href="#programas" class="hover:text-brand-red">Programas</a>
+                    <a href="#planes" class="hover:text-brand-red">Planes</a>
+                    <a href="#horarios" class="hover:text-brand-red">Horarios</a>
+                </div>
+
+                <div class="text-xs text-gray-500">
+                    &copy; 2026 One More Gym. Todos los derechos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Inicializar Lucide Icons
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Menú Móvil
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // 2. Filtro de Horarios
+            const dayBtns = document.querySelectorAll('.day-btn');
+            const scheduleCards = document.querySelectorAll('.schedule-card');
+
+            dayBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    dayBtns.forEach(b => {
+                        b.classList.remove('bg-brand-red', 'text-white', 'shadow-md');
+                        b.classList.add('bg-brand-dark', 'text-gray-300', 'border', 'border-brand-border');
+                    });
+                    btn.classList.remove('bg-brand-dark', 'text-gray-300', 'border', 'border-brand-border');
+                    btn.classList.add('bg-brand-red', 'text-white', 'shadow-md');
+
+                    const selectedDay = btn.getAttribute('data-day');
+
+                    scheduleCards.forEach(card => {
+                        const cardDays = card.getAttribute('data-days');
+                        if (selectedDay === 'all' || cardDays.includes(selectedDay)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 3. Selección de Plan (Preseleccionar en formulario y scroll suave)
+            window.selectPlan = function(planName) {
+                const planSelect = document.getElementById('plan-select');
+                if (planSelect) {
+                    planSelect.value = planName;
+                }
+                const reservaSection = document.getElementById('reserva');
+                if (reservaSection) {
+                    reservaSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            // 4. Validación del Formulario
+            const bookingForm = document.getElementById('booking-form');
+            const toast = document.getElementById('form-toast');
+            const closeToast = document.getElementById('close-toast');
+
+            const showError = (inputElement, message) => {
+                const parent = inputElement.parentElement;
+                const errorMsg = parent.querySelector('.error-msg');
+                inputElement.classList.add('border-red-500');
+                if (errorMsg) {
+                    errorMsg.textContent = message;
+                    errorMsg.classList.remove('hidden');
+                }
+            };
+
+            const clearError = (inputElement) => {
+                const parent = inputElement.parentElement;
+                const errorMsg = parent.querySelector('.error-msg');
+                inputElement.classList.remove('border-red-500');
+                if (errorMsg) {
+                    errorMsg.textContent = '';
+                    errorMsg.classList.add('hidden');
+                }
+            };
+
+            bookingForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+
+                const nameInput = document.getElementById('name');
+                const phoneInput = document.getElementById('phone');
+                const planSelect = document.getElementById('plan-select');
+
+                if (nameInput.value.trim() === '') {
+                    showError(nameInput, 'Ingresa tu nombre');
+                    isValid = false;
+                } else {
+                    clearError(nameInput);
+                }
+
+                if (phoneInput.value.trim() === '' || phoneInput.value.trim().length < 8) {
+                    showError(phoneInput, 'Ingresa tu teléfono/WhatsApp');
+                    isValid = false;
+                } else {
+                    clearError(phoneInput);
+                }
+
+                if (planSelect.value === '') {
+                    showError(planSelect, 'Selecciona un plan');
+                    isValid = false;
+                } else {
+                    clearError(planSelect);
+                }
+
+                if (isValid) {
+                    toast.classList.remove('hidden');
+                    bookingForm.reset();
+                }
+            });
+
+            closeToast.addEventListener('click', () => {
+                toast.classList.add('hidden');
+            });
+
+        });
+    </script>
+</body>
+</html>
